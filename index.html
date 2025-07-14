@@ -95,7 +95,7 @@
     }
     
     .progress-ring-circle {
-      transition: stroke-dashoffset 0.35s);
+      transition: stroke-dashoffset 0.35s;
       transform-origin: 50% 50%;
     }
     
@@ -459,6 +459,53 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      #timeframe-selector {
+        margin-top: 12px;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 8px;
+      }
+      
+      .timeframe-btn {
+        margin-right: 4px;
+        margin-bottom: 4px;
+      }
+      
+      .chart-container {
+        height: 250px;
+      }
+      
+      .level-card {
+        min-width: 160px;
+      }
+      
+      #live-price {
+        font-size: 2rem;
+      }
+      
+      .metric-value {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      #sidebar {
+        width: 100%;
+      }
+      
+      #content {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen text-white">
@@ -489,9 +536,9 @@
             <div class="more-dropdown-item p-2 hover:bg-white/10 rounded cursor-pointer text-sm" data-tf="5m">5M</div>
           </div>
         </div>
-        <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="1M">Monthly</button>
-        <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="1w">Weekly</button>
-        <button class="timeframe-btn active px-3 py-2 rounded-lg text-sm font-medium" data-tf="1d">Daily</button>
+        <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="1M">1M</button>
+        <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="1w">1W</button>
+        <button class="timeframe-btn active px-3 py-2 rounded-lg text-sm font-medium" data-tf="1d">1D</button>
         <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="4h">4H</button>
         <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="2h">2H</button>
         <button class="timeframe-btn px-3 py-2 rounded-lg text-sm font-medium" data-tf="1h">1H</button>
@@ -521,7 +568,7 @@
         <div class="glass-card p-6">
           <h3 class="text-xl font-semibold mb-4 flex items-center">
             <i class="fas fa-chart-area text-purple-400 mr-3"></i>
-            Price Chart - <span id="current-tf" class="text-blue-400 ml-1">Daily</span>
+            Price Chart - <span id="current-tf" class="text-blue-400 ml-1">1D</span>
             <div id="chart-loading" class="ml-auto hidden">
               <div class="loading-spinner"></div>
               <span class="text-sm">Loading...</span>
@@ -811,14 +858,20 @@
           <div>
             <label class="block text-sm font-medium mb-1">Timeframe</label>
             <select id="trade-timeframe" class="input-field w-full p-2 rounded-lg">
-              <option value="1M">Monthly</option>
-              <option value="1w">Weekly</option>
-              <option value="1d" selected>Daily</option>
+              <option value="1M">1M</option>
+              <option value="1w">1W</option>
+              <option value="1d" selected>1D</option>
               <option value="4h">4H</option>
               <option value="2h">2H</option>
               <option value="1h">1H</option>
               <option value="30m">30M</option>
               <option value="15m">15M</option>
+              <option value="3d">3D</option>
+              <option value="8h">8H</option>
+              <option value="6h">6H</option>
+              <option value="3h">3H</option>
+              <option value="45m">45M</option>
+              <option value="5m">5M</option>
             </select>
           </div>
         </div>
